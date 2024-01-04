@@ -1,6 +1,7 @@
 -- Dimension Tables
 CREATE TABLE Dim_Book (
-    BookID_BK INT PRIMARY KEY,
+	Book_SK INT PRIMARY KEY AUTO_INCREMENT,
+    BookID_BK INT ,
     Title VARCHAR(255),
     Isbn13 CHAR(13) UNIQUE,
     LanguageID_BK INT,
@@ -19,7 +20,8 @@ CREATE TABLE Dim_Book (
 CREATE INDEX idx_book_title ON Dim_Book(Title);
 
 CREATE TABLE Dim_Customer (
-    CustomerID_BK INT PRIMARY KEY,
+	CustomerID_SK INT PRIMARY KEY AUTO_INCREMENT,
+    CustomerID_BK INT ,
     FName VARCHAR(255) NOT NULL,
     Lname VARCHAR(255) NOT NULL,
     Email VARCHAR(255) UNIQUE NOT NULL,
@@ -38,7 +40,8 @@ CREATE TABLE Dim_Customer (
 CREATE INDEX idx_customer_email ON Dim_Customer(Email);
 
 CREATE TABLE Dim_Order (
-    OrderID_BK INT PRIMARY KEY,
+	OrderID_SK INT PRIMARY KEY AUTO_INCREMENT,
+    OrderID_BK INT ,
     ShippingMethodID_BK INT,
     MethodName VARCHAR(255) NOT NULL,
     Cost DECIMAL(10, 2) CHECK (Cost >= 0),
@@ -435,7 +438,8 @@ PRINT convert(varchar,getdate(),113)--USED FOR CHECKING RUN TIME.
 
 -- Fact Table
 CREATE TABLE Fact_Sales (
-    SalesID_BK INT PRIMARY KEY,
+	SalesID_SK INT PRIMARY KEY AUTO_INCREMENT,
+    SalesID_BK INT ,
     LineID_BK INT,
     FK_OrderID INT,
     FK_CustomerID INT,
